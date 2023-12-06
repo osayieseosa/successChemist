@@ -6,7 +6,7 @@ export default function AppProvider({children}){
     const [gender, setGender] = useState(localStorage.getItem('gender') || '')
     const [role, setRole] = useState(localStorage.getItem('role') || '')
     const [name, setName] = useState(localStorage.getItem('name') || '')
-    const API_URL = 'http://localhost:3500'
+    const API_URL = 'https://success-chemist-api.onrender.com'
     const [drugs, setDrugs] = useState([]);
     const [dropDownContent, setDropDownContent] = useState('')
     const [menu,setMenu] = useState(false)
