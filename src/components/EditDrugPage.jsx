@@ -5,7 +5,7 @@ import Options from "./Options";
 
 const EditDrugPage = () => {
   const { drugName } = useParams();
-  const { drugs, fetchDrugs } = useContext(AppContext);
+  const { drugs, fetchDrugs, API_URL } = useContext(AppContext);
   const drug = drugs.find(
     (drug) => drug.name.toString() === drugName.toString()
   );
@@ -26,7 +26,7 @@ const EditDrugPage = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(editForm),
     };
-    fetch("http://localhost:3500/drugs", requestOptions)
+    fetch(`${API_URL}/drugs`, requestOptions)
       .then(setEditForm(""))
       .then(navigate(-1))
       .then(fetchDrugs());
