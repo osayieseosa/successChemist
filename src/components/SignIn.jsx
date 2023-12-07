@@ -9,6 +9,7 @@ const SignIn = () => {
   const [name, setName] = useState();
   const [password, setPassword] = useState();
   const [view, setView] = useState(false);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (localStorage.getItem("verifiedAdmin") === "Admin") {
       navigate("/");
@@ -16,6 +17,7 @@ const SignIn = () => {
   }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const corsOptions = {
         method: "POST",
@@ -27,6 +29,7 @@ const SignIn = () => {
       if (response.ok) {
         setName("");
         setPassword("");
+        setLoading(false);
         setVerifiedAdmin(true);
         localStorage.setItem("verifiedAdmin", verifiedAdmin);
         navigate("/");
@@ -78,6 +81,7 @@ const SignIn = () => {
             type="submit"
             className="border-2 w-full rounded-full text-sm bg-gradient-to-b from-[#fff] text-[#d66464] py-2 font-bold"
           >
+            {loading ? "Verifying..." : "Submit"}
             Submit
           </button>
         </form>
