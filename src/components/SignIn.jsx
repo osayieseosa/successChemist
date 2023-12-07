@@ -82,7 +82,6 @@ const SignIn = () => {
             className="border-2 w-full rounded-full text-sm bg-gradient-to-b from-[#fff] text-[#d66464] py-2 font-bold"
           >
             {loading ? "Verifying..." : "Submit"}
-            Submit
           </button>
         </form>
       </div>
