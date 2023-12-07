@@ -28,11 +28,10 @@ const Home = () => {
     setCurrentPage,
   } = useContext(AppContext);
   setCurrentPage("Categories");
-  useEffect(() => {
-    if (!localStorage.getItem("name")) {
-      navigate("/welcome");
-    }
-  }, []);
+
+  if (!localStorage.getItem("name")) {
+    navigate("/welcome");
+  }
   useEffect(() => {
     fetchDrugs();
   }, [drugs, fetchDrugs]);
